@@ -10,6 +10,7 @@
 	- [When responding to a challenge](#when-responding-to-a-challenge)
 	- [When creating a new kata](#when-creating-a-new-kata)
 - [Algorithm Katas](#algorithms-katas)
+- [TDD Katas](#tdd-katas)
 
 ## Introduction
 A kata, or code kata, is defined as an exercise in programming which helps hone your skills through practice and repetition. Dave Thomas [@pragdave](https://twitter.com/pragdave), started this movement for programming. This project aims to hone our skills and have some fun with our coworkers in the process. These exercises vary from general to more complex algorithms and real life situations for you to try using your preferred programming language. Remember that code katas are not quizzes or puzzles. You should not only try to 'solve' it, but find a very good solution, following best practices of the programming language you are using.
@@ -43,3 +44,6 @@ Happy coding!!
 
 ## Algorithms katas
   - [01: Decode the Morse code](https://github.com/MakingSense/coding-dojo/tree/master/Algorithms/Decode%20the%20morse%20code)
+
+## TDD katas
+  - [01: Telemetry System (C#)](https://github.com/MakingSense/coding-dojo/tree/master/TDD/TelemetrySystem)
