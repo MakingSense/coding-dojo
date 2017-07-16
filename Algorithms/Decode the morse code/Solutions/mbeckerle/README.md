@@ -1,6 +1,6 @@
 # Morse
 
-**TODO: Add description**
+Morse decoder library.
 
 ## Installation
 

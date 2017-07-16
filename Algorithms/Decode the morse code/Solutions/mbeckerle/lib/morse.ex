@@ -6,7 +6,7 @@ defmodule Morse do
   @words_separator "   "
   @hacked_words_separator " @ "
 
-    @doc """
+  @doc """
   Decode.
 
   ## Examples
