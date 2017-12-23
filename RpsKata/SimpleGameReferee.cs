@@ -8,7 +8,7 @@ namespace RpsKata
     {
         public GameResult Evaluate(GameSetup gameSetup)
         {
-            throw new NotImplementedException();
+            return GameResult.Draw;
         }
     }
 }
