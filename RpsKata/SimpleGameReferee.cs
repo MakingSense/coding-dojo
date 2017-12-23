@@ -13,7 +13,14 @@ namespace RpsKata
                 return GameResult.Draw;
             }
 
-            throw new NotImplementedException();
+            if (gameSetup.Player1Choice == GameChoice.Rock && gameSetup.Player2Choice == GameChoice.Scissors
+                || gameSetup.Player1Choice == GameChoice.Paper && gameSetup.Player2Choice == GameChoice.Rock
+                || gameSetup.Player1Choice == GameChoice.Scissors && gameSetup.Player2Choice == GameChoice.Paper)
+            {
+                return GameResult.Player1Won;
+            }
+
+            return GameResult.Player2Won;
         }
     }
 }
