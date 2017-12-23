@@ -3,8 +3,22 @@ using Xunit;
 
 namespace RpsKata
 {
-    public class SimpleGameRefereeTest
+    public class SimpleGameRefereeTest : GameRefereeTest<SimpleGameReferee>
+    { }
+
+    public class ExtensionRulesGameRefereeTest : GameRefereeTest<ExtensionRulesGameReferee>
+    { }
+
+    public abstract class GameRefereeTest<TSut> : GameRefereeTest
+        where TSut : IGameReferee, new()
     {
+        protected override IGameReferee GetSut() => new TSut();
+    }
+
+    public abstract class GameRefereeTest
+    {
+        protected abstract IGameReferee GetSut();
+
         [Theory]
         [InlineData(GameChoice.Rock, GameChoice.Rock, GameResult.Draw)]
         [InlineData(GameChoice.Paper, GameChoice.Paper, GameResult.Draw)]
@@ -23,7 +37,7 @@ namespace RpsKata
                 Player1Choice = player1Choice,
                 Player2Choice = player2Choice
             };
-            var sut = new SimpleGameReferee();
+            var sut = GetSut();
 
             // Act
             var result = sut.Evaluate(setup);
