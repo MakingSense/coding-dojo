@@ -8,7 +8,12 @@ namespace RpsKata
     {
         public GameResult Evaluate(GameSetup gameSetup)
         {
-            return GameResult.Draw;
+            if (gameSetup.Player1Choice == gameSetup.Player2Choice)
+            {
+                return GameResult.Draw;
+            }
+
+            throw new NotImplementedException();
         }
     }
 }
