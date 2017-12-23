@@ -26,5 +26,40 @@ namespace RpsKata
             // Assert
             Assert.Equal(expectedResult, result);
         }
+
+        [Theory]
+        [InlineData(GameChoice.Rock, GameChoice.Paper)]
+        [InlineData(GameChoice.Rock, GameChoice.Scissors)]
+        [InlineData(GameChoice.Paper, GameChoice.Rock)]
+        [InlineData(GameChoice.Paper, GameChoice.Scissors)]
+        [InlineData(GameChoice.Scissors, GameChoice.Rock)]
+        [InlineData(GameChoice.Scissors, GameChoice.Paper)]
+        public void Evaluate_different_choice_should_not_return_Draw(GameChoice player1Choice, GameChoice player2Choice)
+        {
+            // Arrange
+            var setup = new GameSetup()
+            {
+                Player1Choice = player1Choice,
+                Player2Choice = player2Choice
+            };
+            var wrongResult = GameResult.Draw;
+            var sut = new SimpleGameReferee();
+
+            GameResult? result;
+
+            // Act
+            try
+            {
+                result = sut.Evaluate(setup);
+            }
+            catch
+            {
+                // I am not worry about it in this test
+                result = null;
+            }
+
+            // Assert
+            Assert.NotEqual(wrongResult, result);
+        }
     }
 }
