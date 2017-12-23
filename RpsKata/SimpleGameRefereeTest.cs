@@ -61,5 +61,49 @@ namespace RpsKata
             // Assert
             Assert.NotEqual(wrongResult, result);
         }
+
+        [Theory]
+        [InlineData(GameChoice.Rock, GameChoice.Scissors)]
+        [InlineData(GameChoice.Paper, GameChoice.Rock)]
+        [InlineData(GameChoice.Scissors, GameChoice.Paper)]
+        public void Evaluate_some_pairs_should_return_Player1Won(GameChoice player1Choice, GameChoice player2Choice)
+        {
+            // Arrange
+            var setup = new GameSetup()
+            {
+                Player1Choice = player1Choice,
+                Player2Choice = player2Choice
+            };
+            var expectedResult = GameResult.Player1Won;
+            var sut = new SimpleGameReferee();
+
+            // Act
+            var result = sut.Evaluate(setup);
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Theory]
+        [InlineData(GameChoice.Scissors, GameChoice.Rock)]
+        [InlineData(GameChoice.Rock, GameChoice.Paper)]
+        [InlineData(GameChoice.Paper, GameChoice.Scissors)]
+        public void Evaluate_some_pairs_should_return_Player2Won(GameChoice player1Choice, GameChoice player2Choice)
+        {
+            // Arrange
+            var setup = new GameSetup()
+            {
+                Player1Choice = player1Choice,
+                Player2Choice = player2Choice
+            };
+            var expectedResult = GameResult.Player2Won;
+            var sut = new SimpleGameReferee();
+
+            // Act
+            var result = sut.Evaluate(setup);
+
+            // Assert
+            Assert.Equal(expectedResult, result);
+        }
     }
 }
