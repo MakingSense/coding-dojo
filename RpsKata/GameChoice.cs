@@ -8,6 +8,8 @@ namespace RpsKata
     {
         Rock,
         Paper,
-        Scissors
+        Scissors,
+        Spock,
+        Lizard
     }
 }
