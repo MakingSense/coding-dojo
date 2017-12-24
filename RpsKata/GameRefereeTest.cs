@@ -9,7 +9,7 @@ namespace RpsKata
     public class ExtensionRulesGameRefereeTest : GameRefereeTest<ExtensionRulesGameReferee>
     { }
 
-    public class WinnerRulesGameRefereeTest : GameRefereeTest<ExtensionRulesGameReferee>
+    public class WinnerRulesGameRefereeTest : GameRefereeTest<WinnerRulesGameReferee>
     { }
 
     public abstract class GameRefereeTest<TSut> : GameRefereeTest
