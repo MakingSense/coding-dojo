@@ -7,7 +7,7 @@ namespace RpsKata
 {
     public class WinnerRulesGameReferee : IGameReferee
     {
-        private (GameChoice winnerChoice, GameChoice looserChoice)[] _rules = new[]
+        private HashSet<(GameChoice winnerChoice, GameChoice looserChoice)> _rules = new HashSet<(GameChoice winnerChoice, GameChoice looserChoice)>()
         {
             (GameChoice.Rock, GameChoice.Scissors),
             (GameChoice.Paper, GameChoice.Rock),
@@ -15,8 +15,8 @@ namespace RpsKata
         };
 
         public GameResult Evaluate(GameSetup gameSetup) =>
-            _rules.Any(x => x.winnerChoice == gameSetup.Player1Choice && x.looserChoice == gameSetup.Player2Choice) ? GameResult.Player1Won
-            : _rules.Any(x => x.winnerChoice == gameSetup.Player2Choice && x.looserChoice == gameSetup.Player1Choice) ? GameResult.Player2Won
+            _rules.Contains((gameSetup.Player1Choice, gameSetup.Player2Choice)) ? GameResult.Player1Won
+            : _rules.Contains((gameSetup.Player2Choice, gameSetup.Player1Choice)) ? GameResult.Player2Won
             : GameResult.Draw;
     }
 }
