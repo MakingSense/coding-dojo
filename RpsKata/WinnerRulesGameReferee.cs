@@ -10,8 +10,15 @@ namespace RpsKata
         private HashSet<(GameChoice winnerChoice, GameChoice looserChoice)> _rules = new HashSet<(GameChoice winnerChoice, GameChoice looserChoice)>()
         {
             (GameChoice.Rock, GameChoice.Scissors),
+            (GameChoice.Rock, GameChoice.Lizard),
             (GameChoice.Paper, GameChoice.Rock),
-            (GameChoice.Scissors, GameChoice.Paper)
+            (GameChoice.Paper, GameChoice.Spock),
+            (GameChoice.Scissors, GameChoice.Paper),
+            (GameChoice.Scissors, GameChoice.Lizard),
+            (GameChoice.Spock, GameChoice.Scissors),
+            (GameChoice.Spock, GameChoice.Rock),
+            (GameChoice.Lizard, GameChoice.Spock),
+            (GameChoice.Lizard, GameChoice.Paper)
         };
 
         public GameResult Evaluate(GameSetup gameSetup) =>
