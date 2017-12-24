@@ -14,8 +14,15 @@ namespace RpsKata
             }
 
             if (gameSetup.Player1Choice == GameChoice.Rock && gameSetup.Player2Choice == GameChoice.Scissors
+                || gameSetup.Player1Choice == GameChoice.Rock && gameSetup.Player2Choice == GameChoice.Lizard
                 || gameSetup.Player1Choice == GameChoice.Paper && gameSetup.Player2Choice == GameChoice.Rock
-                || gameSetup.Player1Choice == GameChoice.Scissors && gameSetup.Player2Choice == GameChoice.Paper)
+                || gameSetup.Player1Choice == GameChoice.Paper && gameSetup.Player2Choice == GameChoice.Spock
+                || gameSetup.Player1Choice == GameChoice.Scissors && gameSetup.Player2Choice == GameChoice.Paper
+                || gameSetup.Player1Choice == GameChoice.Scissors && gameSetup.Player2Choice == GameChoice.Lizard
+                || gameSetup.Player1Choice == GameChoice.Spock && gameSetup.Player2Choice == GameChoice.Scissors
+                || gameSetup.Player1Choice == GameChoice.Spock && gameSetup.Player2Choice == GameChoice.Rock
+                || gameSetup.Player1Choice == GameChoice.Lizard && gameSetup.Player2Choice == GameChoice.Spock
+                || gameSetup.Player1Choice == GameChoice.Lizard && gameSetup.Player2Choice == GameChoice.Paper)
             {
                 return GameResult.Player1Won;
             }
