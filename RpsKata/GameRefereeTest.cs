@@ -9,6 +9,9 @@ namespace RpsKata
     public class ExtensionRulesGameRefereeTest : GameRefereeTest<ExtensionRulesGameReferee>
     { }
 
+    public class WinnerRulesGameRefereeTest : GameRefereeTest<ExtensionRulesGameReferee>
+    { }
+
     public abstract class GameRefereeTest<TSut> : GameRefereeTest
         where TSut : IGameReferee, new()
     {
