@@ -9,38 +9,38 @@ namespace RpsKata
     {
         public GameResult Evaluate(GameSetup gameSetup)
         {
-            var player1 = MapEnumToObject(gameSetup.Player1Choice, GameResult.Player1Won);
-            var player2 = MapEnumToObject(gameSetup.Player2Choice, GameResult.Player2Won);
-            return player1.PlayAgainst(player2);
+            var player1Choice = MapEnumToObject(gameSetup.Player1Choice, GameResult.Player1Won());
+            var player2Choice = MapEnumToObject(gameSetup.Player2Choice, GameResult.Player2Won());
+            return player1Choice.PlayAgainst(player2Choice);
         }
 
         // This method is only necessary to adapt this new implementation to previous 
         // interface. If we decided to use this implementation definitivaly, it should
         // not be necessary.
-        private Choice MapEnumToObject(GameChoice choiceEnum, GameResult whoWinIfItWins)
+        private Choice MapEnumToObject(GameChoice choiceEnum, GameResult resultIfItWins)
         {
             switch (choiceEnum)
             {
-                case GameChoice.Rock: return new Rock(whoWinIfItWins);
-                case GameChoice.Paper: return new Paper(whoWinIfItWins);
-                case GameChoice.Scissors: return new Scissors(whoWinIfItWins);
-                case GameChoice.Lizard: return new Lizard(whoWinIfItWins);
-                case GameChoice.Spock: return new Spock(whoWinIfItWins);
+                case GameChoice.Rock: return new Rock(resultIfItWins);
+                case GameChoice.Paper: return new Paper(resultIfItWins);
+                case GameChoice.Scissors: return new Scissors(resultIfItWins);
+                case GameChoice.Lizard: return new Lizard(resultIfItWins);
+                case GameChoice.Spock: return new Spock(resultIfItWins);
                 default: throw new ArgumentOutOfRangeException(nameof(choiceEnum));
             }
         }
 
         private abstract class Choice
         {
-            private readonly GameResult _whoWinIfIWin;
+            private readonly GameResult _resultIfIWin;
 
-            public Choice(GameResult whoWinIfIWin)
+            public Choice(GameResult resultIfIWin)
             {
-                _whoWinIfIWin = whoWinIfIWin;
+                _resultIfIWin = resultIfIWin;
             }
 
-            protected GameResult Draw() => GameResult.Draw;
-            protected GameResult IWin() => _whoWinIfIWin;
+            protected GameResult Draw() => GameResult.Draw();
+            public GameResult IWin() => _resultIfIWin;
 
             public abstract GameResult PlayAgainst(Choice other);
             public abstract GameResult PlayAgainst(Rock other);
@@ -52,7 +52,7 @@ namespace RpsKata
 
         private class Rock : Choice
         {
-            public Rock(GameResult whoWinIfIWin) : base(whoWinIfIWin) { }
+            public Rock(GameResult resultIfIWin) : base(resultIfIWin) { }
             public override GameResult PlayAgainst(Choice other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Rock other) => Draw();
             public override GameResult PlayAgainst(Paper other) => other.PlayAgainst(this);
@@ -63,7 +63,7 @@ namespace RpsKata
 
         private class Paper : Choice
         {
-            public Paper(GameResult whoWinIfIWin) : base(whoWinIfIWin) { }
+            public Paper(GameResult resultIfIWin) : base(resultIfIWin) { }
             public override GameResult PlayAgainst(Choice other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Rock other) => IWin();
             public override GameResult PlayAgainst(Paper other) => Draw();
@@ -74,7 +74,7 @@ namespace RpsKata
 
         private class Scissors : Choice
         {
-            public Scissors(GameResult whoWinIfIWin) : base(whoWinIfIWin) { }
+            public Scissors(GameResult resultIfIWin) : base(resultIfIWin) { }
             public override GameResult PlayAgainst(Choice other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Rock other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Paper other) => IWin();
@@ -85,7 +85,7 @@ namespace RpsKata
 
         private class Lizard : Choice
         {
-            public Lizard(GameResult whoWinIfIWin) : base(whoWinIfIWin) { }
+            public Lizard(GameResult resultIfIWin) : base(resultIfIWin) { }
             public override GameResult PlayAgainst(Choice other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Rock other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Paper other) => IWin();
@@ -96,7 +96,7 @@ namespace RpsKata
 
         private class Spock : Choice
         {
-            public Spock(GameResult whoWinIfIWin) : base(whoWinIfIWin) { }
+            public Spock(GameResult resultIfIWin) : base(resultIfIWin) { }
             public override GameResult PlayAgainst(Choice other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Rock other) => IWin();
             public override GameResult PlayAgainst(Paper other) => other.PlayAgainst(this);

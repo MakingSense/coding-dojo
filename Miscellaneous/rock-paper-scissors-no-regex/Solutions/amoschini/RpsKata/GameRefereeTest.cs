@@ -26,34 +26,34 @@ namespace RpsKata
         protected abstract IGameReferee GetSut();
 
         [Theory]
-        [InlineData(GameChoice.Rock, GameChoice.Rock, GameResult.Draw)]
-        [InlineData(GameChoice.Paper, GameChoice.Paper, GameResult.Draw)]
-        [InlineData(GameChoice.Scissors, GameChoice.Scissors, GameResult.Draw)]
-        [InlineData(GameChoice.Spock, GameChoice.Spock, GameResult.Draw)]
-        [InlineData(GameChoice.Lizard, GameChoice.Lizard, GameResult.Draw)]
+        [InlineData(GameChoice.Rock, GameChoice.Rock, false, false, true)]
+        [InlineData(GameChoice.Paper, GameChoice.Paper, false, false, true)]
+        [InlineData(GameChoice.Scissors, GameChoice.Scissors, false, false, true)]
+        [InlineData(GameChoice.Spock, GameChoice.Spock, false, false, true)]
+        [InlineData(GameChoice.Lizard, GameChoice.Lizard, false, false, true)]
 
-        [InlineData(GameChoice.Rock, GameChoice.Scissors, GameResult.Player1Won)]
-        [InlineData(GameChoice.Rock, GameChoice.Lizard, GameResult.Player1Won)]
-        [InlineData(GameChoice.Paper, GameChoice.Rock, GameResult.Player1Won)]
-        [InlineData(GameChoice.Paper, GameChoice.Spock, GameResult.Player1Won)]
-        [InlineData(GameChoice.Scissors, GameChoice.Paper, GameResult.Player1Won)]
-        [InlineData(GameChoice.Scissors, GameChoice.Lizard, GameResult.Player1Won)]
-        [InlineData(GameChoice.Spock, GameChoice.Scissors, GameResult.Player1Won)]
-        [InlineData(GameChoice.Spock, GameChoice.Rock, GameResult.Player1Won)]
-        [InlineData(GameChoice.Lizard, GameChoice.Spock, GameResult.Player1Won)]
-        [InlineData(GameChoice.Lizard, GameChoice.Paper, GameResult.Player1Won)]
+        [InlineData(GameChoice.Rock, GameChoice.Scissors, true, false, false)]
+        [InlineData(GameChoice.Rock, GameChoice.Lizard, true, false, false)]
+        [InlineData(GameChoice.Paper, GameChoice.Rock, true, false, false)]
+        [InlineData(GameChoice.Paper, GameChoice.Spock, true, false, false)]
+        [InlineData(GameChoice.Scissors, GameChoice.Paper, true, false, false)]
+        [InlineData(GameChoice.Scissors, GameChoice.Lizard, true, false, false)]
+        [InlineData(GameChoice.Spock, GameChoice.Scissors, true, false, false)]
+        [InlineData(GameChoice.Spock, GameChoice.Rock, true, false, false)]
+        [InlineData(GameChoice.Lizard, GameChoice.Spock, true, false, false)]
+        [InlineData(GameChoice.Lizard, GameChoice.Paper, true, false, false)]
 
-        [InlineData(GameChoice.Scissors, GameChoice.Rock, GameResult.Player2Won)]
-        [InlineData(GameChoice.Scissors, GameChoice.Spock, GameResult.Player2Won)]
-        [InlineData(GameChoice.Rock, GameChoice.Paper, GameResult.Player2Won)]
-        [InlineData(GameChoice.Rock, GameChoice.Spock, GameResult.Player2Won)]
-        [InlineData(GameChoice.Paper, GameChoice.Scissors, GameResult.Player2Won)]
-        [InlineData(GameChoice.Paper, GameChoice.Lizard, GameResult.Player2Won)]
-        [InlineData(GameChoice.Spock, GameChoice.Paper, GameResult.Player2Won)]
-        [InlineData(GameChoice.Spock, GameChoice.Lizard, GameResult.Player2Won)]
-        [InlineData(GameChoice.Lizard, GameChoice.Rock, GameResult.Player2Won)]
-        [InlineData(GameChoice.Lizard, GameChoice.Scissors, GameResult.Player2Won)]
-        public void Evaluate_all_combinations_should_return_the_expected_result(GameChoice player1Choice, GameChoice player2Choice, GameResult expectedResult)
+        [InlineData(GameChoice.Scissors, GameChoice.Rock, false, true, false)]
+        [InlineData(GameChoice.Scissors, GameChoice.Spock, false, true, false)]
+        [InlineData(GameChoice.Rock, GameChoice.Paper, false, true, false)]
+        [InlineData(GameChoice.Rock, GameChoice.Spock, false, true, false)]
+        [InlineData(GameChoice.Paper, GameChoice.Scissors, false, true, false)]
+        [InlineData(GameChoice.Paper, GameChoice.Lizard, false, true, false)]
+        [InlineData(GameChoice.Spock, GameChoice.Paper, false, true, false)]
+        [InlineData(GameChoice.Spock, GameChoice.Lizard, false, true, false)]
+        [InlineData(GameChoice.Lizard, GameChoice.Rock, false, true, false)]
+        [InlineData(GameChoice.Lizard, GameChoice.Scissors, false, true, false)]
+        public void Evaluate_all_combinations_should_return_the_expected_result(GameChoice player1Choice, GameChoice player2Choice, bool player1Won, bool player2Won, bool draw)
         {
             // Arrange
             var setup = new GameSetup()
@@ -67,7 +67,9 @@ namespace RpsKata
             var result = sut.Evaluate(setup);
 
             // Assert
-            Assert.Equal(expectedResult, result);
+            Assert.Equal(player1Won, result.TheWinnerIsPlayer1);
+            Assert.Equal(player2Won, result.TheWinnerIsPlayer2);
+            Assert.Equal(draw, result.ItIsADraw);
         }
     }
 }

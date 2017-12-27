@@ -10,7 +10,7 @@ namespace RpsKata
         {
             if (gameSetup.Player1Choice == gameSetup.Player2Choice)
             {
-                return GameResult.Draw;
+                return GameResult.Draw();
             }
 
             if (gameSetup.Player1Choice == GameChoice.Rock && gameSetup.Player2Choice == GameChoice.Scissors
@@ -24,10 +24,10 @@ namespace RpsKata
                 || gameSetup.Player1Choice == GameChoice.Lizard && gameSetup.Player2Choice == GameChoice.Spock
                 || gameSetup.Player1Choice == GameChoice.Lizard && gameSetup.Player2Choice == GameChoice.Paper)
             {
-                return GameResult.Player1Won;
+                return GameResult.Player1Won();
             }
 
-            return GameResult.Player2Won;
+            return GameResult.Player2Won();
         }
     }
 }
