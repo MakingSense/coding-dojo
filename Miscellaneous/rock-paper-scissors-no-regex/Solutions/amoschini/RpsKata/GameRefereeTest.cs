@@ -12,6 +12,9 @@ namespace RpsKata
     public class WinnerRulesGameRefereeTest : GameRefereeTest<WinnerRulesGameReferee>
     { }
 
+    public class OopAdapterRulesGameRefereeTest : GameRefereeTest<OopAdapterRulesGameReferee>
+    { }
+
     public abstract class GameRefereeTest<TSut> : GameRefereeTest
         where TSut : IGameReferee, new()
     {
