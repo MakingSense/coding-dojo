@@ -44,49 +44,49 @@ namespace RpsKata
         {
             public GameResult PlayAgainst(IChoice player2Choice) => player2Choice.PlayAgainst(this);
             public GameResult PlayAgainst(Rock player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Player1Won;
+            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Player2Won;
+            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Player2Won;
+            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Player1Won;
         }
 
         private class Paper : IChoice
         {
             public GameResult PlayAgainst(IChoice player2Choice) => player2Choice.PlayAgainst(this);
-            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Player2Won;
             public GameResult PlayAgainst(Paper player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Player1Won;
+            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Player1Won;
+            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Player2Won;
         }
 
         private class Scissors : IChoice
         {
             public GameResult PlayAgainst(IChoice player2Choice) => player2Choice.PlayAgainst(this);
-            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Player1Won;
+            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Player2Won;
             public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Player2Won;
+            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Player1Won;
         }
 
         private class Lizard : IChoice
         {
             public GameResult PlayAgainst(IChoice player2Choice) => player2Choice.PlayAgainst(this);
-            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Player1Won;
+            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Player2Won;
+            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Player1Won;
             public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Spock player1Choice) => GameResult.Player2Won;
         }
 
         private class Spock : IChoice
         {
             public GameResult PlayAgainst(IChoice player2Choice) => player2Choice.PlayAgainst(this);
-            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Draw;
-            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Draw;
+            public GameResult PlayAgainst(Rock player1Choice) => GameResult.Player2Won;
+            public GameResult PlayAgainst(Paper player1Choice) => GameResult.Player1Won;
+            public GameResult PlayAgainst(Scissors player1Choice) => GameResult.Player2Won;
+            public GameResult PlayAgainst(Lizard player1Choice) => GameResult.Player1Won;
             public GameResult PlayAgainst(Spock player1Choice) => GameResult.Draw;
         }
     }
