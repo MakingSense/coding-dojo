@@ -9,11 +9,11 @@ namespace RpsKata
     {
         private (GameChoice player1Choice, GameChoice player2Choice, GameResult result)[] _rules = new[]
         {
-            (GameChoice.Rock, GameChoice.Rock, GameResult.Draw()),
-            (GameChoice.Paper, GameChoice.Paper, GameResult.Draw()),
-            (GameChoice.Scissors, GameChoice.Scissors, GameResult.Draw()),
-            (GameChoice.Spock, GameChoice.Spock, GameResult.Draw()),
-            (GameChoice.Lizard, GameChoice.Lizard, GameResult.Draw()),
+            (GameChoice.Rock, GameChoice.Rock, GameResult.Draw(GameChoice.Rock)),
+            (GameChoice.Paper, GameChoice.Paper, GameResult.Draw(GameChoice.Paper)),
+            (GameChoice.Scissors, GameChoice.Scissors, GameResult.Draw(GameChoice.Scissors)),
+            (GameChoice.Spock, GameChoice.Spock, GameResult.Draw(GameChoice.Spock)),
+            (GameChoice.Lizard, GameChoice.Lizard, GameResult.Draw(GameChoice.Lizard)),
             (GameChoice.Rock, GameChoice.Scissors, GameResult.Player1Won()),
             (GameChoice.Rock, GameChoice.Lizard, GameResult.Player1Won()),
             (GameChoice.Paper, GameChoice.Rock, GameResult.Player1Won()),

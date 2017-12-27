@@ -10,7 +10,7 @@ namespace RpsKata
         {
             if (gameSetup.Player1Choice == gameSetup.Player2Choice)
             {
-                return GameResult.Draw();
+                return GameResult.Draw(gameSetup.Player1Choice);
             }
 
             if (gameSetup.Player1Choice == GameChoice.Rock && gameSetup.Player2Choice == GameChoice.Scissors

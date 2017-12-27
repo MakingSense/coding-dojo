@@ -24,6 +24,6 @@ namespace RpsKata
         public GameResult Evaluate(GameSetup gameSetup) =>
             _rules.Contains((gameSetup.Player1Choice, gameSetup.Player2Choice)) ? GameResult.Player1Won()
             : _rules.Contains((gameSetup.Player2Choice, gameSetup.Player1Choice)) ? GameResult.Player2Won()
-            : GameResult.Draw();
+            : GameResult.Draw(gameSetup.Player1Choice);
     }
 }

@@ -39,7 +39,7 @@ namespace RpsKata
                 _resultIfIWin = resultIfIWin;
             }
 
-            protected GameResult Draw() => GameResult.Draw();
+            protected GameResult Draw() => GameResult.Draw(ToGameChoice());
             public GameResult IWin() => _resultIfIWin;
 
             public abstract GameResult PlayAgainst(Choice other);
@@ -48,6 +48,8 @@ namespace RpsKata
             public abstract GameResult PlayAgainst(Scissors other);
             public abstract GameResult PlayAgainst(Lizard other);
             public abstract GameResult PlayAgainst(Spock other);
+
+            public abstract GameChoice ToGameChoice();
         }
 
         private class Rock : Choice
@@ -59,6 +61,7 @@ namespace RpsKata
             public override GameResult PlayAgainst(Scissors other) => IWin();
             public override GameResult PlayAgainst(Lizard other) => IWin();
             public override GameResult PlayAgainst(Spock other) => other.PlayAgainst(this);
+            public override GameChoice ToGameChoice() => GameChoice.Rock;
         }
 
         private class Paper : Choice
@@ -70,6 +73,7 @@ namespace RpsKata
             public override GameResult PlayAgainst(Scissors other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Lizard other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Spock other) => IWin();
+            public override GameChoice ToGameChoice() => GameChoice.Paper;
         }
 
         private class Scissors : Choice
@@ -81,6 +85,7 @@ namespace RpsKata
             public override GameResult PlayAgainst(Scissors other) => Draw();
             public override GameResult PlayAgainst(Lizard other) => IWin();
             public override GameResult PlayAgainst(Spock other) => other.PlayAgainst(this);
+            public override GameChoice ToGameChoice() => GameChoice.Scissors;
         }
 
         private class Lizard : Choice
@@ -92,6 +97,7 @@ namespace RpsKata
             public override GameResult PlayAgainst(Scissors other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Lizard other) => Draw();
             public override GameResult PlayAgainst(Spock other) => IWin();
+            public override GameChoice ToGameChoice() => GameChoice.Lizard;
         }
 
         private class Spock : Choice
@@ -103,6 +109,7 @@ namespace RpsKata
             public override GameResult PlayAgainst(Scissors other) => IWin();
             public override GameResult PlayAgainst(Lizard other) => other.PlayAgainst(this);
             public override GameResult PlayAgainst(Spock other) => Draw();
+            public override GameChoice ToGameChoice() => GameChoice.Spock;
         }
     }
 }
