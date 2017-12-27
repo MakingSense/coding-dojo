@@ -9,6 +9,7 @@ namespace RpsKata
         public bool TheWinnerIsPlayer1 { get; }
         public bool TheWinnerIsPlayer2 { get; }
         public bool ItIsADraw { get; }
+        public string Explanation { get; }
 
         private GameResult(bool player1Won, bool player2Won)
         {
