@@ -22,8 +22,8 @@ namespace RpsKata
             Explanation = explanation;
         }
 
-        public static GameResult Player1Won() => new GameResult(true, false, "");
-        public static GameResult Player2Won() => new GameResult(false, true, "");
+        public static GameResult Player1Won(GameChoice winnerChoise, string action, GameChoice looserChoice) => new GameResult(true, false, $"{winnerChoise} {action} {looserChoice}");
+        public static GameResult Player2Won(GameChoice winnerChoise, string action, GameChoice looserChoice) => new GameResult(false, true, $"{winnerChoise} {action} {looserChoice}");
         public static GameResult Draw(GameChoice choice) => new GameResult(false, false, $"Both players chose {choice.ToString()}");
     }
 }

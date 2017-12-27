@@ -24,10 +24,10 @@ namespace RpsKata
                 || gameSetup.Player1Choice == GameChoice.Lizard && gameSetup.Player2Choice == GameChoice.Spock
                 || gameSetup.Player1Choice == GameChoice.Lizard && gameSetup.Player2Choice == GameChoice.Paper)
             {
-                return GameResult.Player1Won();
+                return GameResult.Player1Won(gameSetup.Player1Choice, "TODO", gameSetup.Player2Choice);
             }
 
-            return GameResult.Player2Won();
+            return GameResult.Player2Won(gameSetup.Player2Choice, "TODO", gameSetup.Player1Choice);
         }
     }
 }

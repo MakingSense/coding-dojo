@@ -9,8 +9,8 @@ namespace RpsKata
     {
         public GameResult Evaluate(GameSetup gameSetup)
         {
-            var player1Choice = MapEnumToObject(gameSetup.Player1Choice, GameResult.Player1Won());
-            var player2Choice = MapEnumToObject(gameSetup.Player2Choice, GameResult.Player2Won());
+            var player1Choice = MapEnumToObject(gameSetup.Player1Choice, GameResult.Player1Won(gameSetup.Player1Choice, "TODO", gameSetup.Player2Choice));
+            var player2Choice = MapEnumToObject(gameSetup.Player2Choice, GameResult.Player2Won(gameSetup.Player2Choice, "TODO", gameSetup.Player1Choice));
             return player1Choice.PlayAgainst(player2Choice);
         }
 
